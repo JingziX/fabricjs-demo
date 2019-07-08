@@ -6,9 +6,7 @@
     var pathData2 = "m94.687504,150.654875l130.271436,0l40.254876,-123.757319l40.254899,123.757319l130.271413,0l-105.391612,76.485354l40.256959,123.757319l-105.391658,-76.487437l-105.391635,76.487437l40.25697,-123.757319l-105.391647,-76.485354z";
     var imgpath = '../images/img1.jpg';
     fabric.Image.fromURL(imgpath, function(img) {
-        img.width = 230;
-        img.height = 230;
-        console.log(img)
+        // img.set({ width: 230, height: 230});
         var patternSourceCanvas = new fabric.StaticCanvas();
         patternSourceCanvas.add(img);
         patternSourceCanvas.renderAll();
@@ -23,19 +21,29 @@
             },
             repeat: "no-repeat"
         });
-        var path = new fabric.Path(pathData, {
+        var path = new fabric.Path(pathData,{
             left: 120,
             top: 120,
             fill: pattern
         });
         canvas.add(path)
     });
-    /* var imgElement = document.getElementById('my-image');
-    var imgInstance = new fabric.Image.fromURL(imgElement, {
-        left: 0,
-        top: 0,
-        angle: 30,
-        opacity: 0.85
+    /* var clipPath = new fabric.Circle({
+        radius: 100,
+        top: -100,
+        left: -100
     });
-    canvas.add(imgInstance); */
+    var group = new fabric.Group([
+        new fabric.Rect({ width: 100, height: 100, fill: 'red' }),
+        new fabric.Rect({ width: 100, height: 100, fill: 'yellow', left: 100 }),
+        new fabric.Rect({ width: 100, height: 100, fill: 'blue', top: 100 }),
+        new fabric.Rect({ width: 100, height: 100, fill: 'green', left: 100, top: 100 })
+    ]);
+    group.clipPath = clipPath;
+    canvas.add(group); */
+    /* var imgElement = document.getElementById('my-image');
+    var imgInstance = new fabric.Image.fromURL('http://www.abudhabi2.com/wp-content/uploads/2016/12/IMG-Worlds-of-Adventure.jpg', function(img) {
+        canvas.add(img);
+    });
+ */
 })()
