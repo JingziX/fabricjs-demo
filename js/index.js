@@ -1,49 +1,215 @@
-(function() {
+(function () {
     var canvas = this.__canvas = new fabric.Canvas('canvas');
     fabric.Object.prototype.transparentCorners = false;
-    var pathData = "m169.871609,191.073971c-0.464361,-17.520698 8.672599,-34.734379 24.042761,-44.53059c25.059886,-18.087345 58.135017,-26.329294 89.22569,-21.349533c15.39562,-2.255948 22.209365,12.92187 16.793297,24.60995c-8.371627,7.774753 -22.933236,0.380385 -33.77541,4.40158c-35.150858,4.298312 -69.848819,18.811284 -93.605755,44.31052c-0.144921,-2.727895 -3.822441,-4.545582 -2.680575,-7.441927l-0.000008,0zm0.42459,15.548146c1.871734,-12.359737 14.851589,-18.794992 23.876809,-26.306198c30.383116,-20.421111 68.470057,-28.519195 105.301134,-27.14573c0.912672,14.082313 -6.065561,27.523408 -14.4615,38.679491c-11.528821,6.103804 -25.865847,-0.846364 -38.08707,4.709972c-21.434707,4.927313 -45.293784,11.135687 -59.012945,28.881913c-4.985057,14.250778 -15.521664,-0.254037 -16.33679,-8.641484c-1.158749,-3.332418 -0.997528,-6.755878 -1.279623,-10.177957l-0.000015,-0.000007zm5.885016,-42.263246c1.834685,-15.507397 12.597317,-28.329823 22.470861,-40.145742c11.13,-12.592982 26.281574,-21.825008 43.308325,-25.207022c13.495707,-3.347378 27.404844,-4.739979 41.241172,-6.146035c10.493099,7.653718 17.168086,20.963035 15.409918,33.552346c-8.14987,1.960328 -22.559849,-4.667301 -33.549355,-3.051074c-31.167204,0.278766 -63.029373,12.141136 -84.092141,34.271533c-1.753718,2.135582 -3.330477,4.398851 -4.788781,6.725987l0,0.000007zm-1.670606,61.173708c11.654729,8.875154 12.036827,24.257556 19.199184,35.836133c-8.585468,-10.495844 -16.142659,-22.757756 -19.199184,-35.836133zm9.22879,8.455359c3.656073,-9.566616 15.117528,-23.011793 24.680207,-22.011939c3.822737,9.350621 5.478885,19.482394 11.69221,27.911965c16.682695,29.081616 47.212029,54.239854 83.50661,55.031877c5.935385,1.142473 21.670056,-2.65318 21.030601,-1.08274c-15.16961,7.075112 -32.732531,8.626553 -49.447127,8.057335c-31.04188,-1.957614 -61.961461,-16.116017 -80.622898,-40.070609c-5.281609,-8.603464 -8.283913,-18.24072 -10.839603,-27.834528l0,-0.001361zm25.550425,-24.392033c8.376031,-3.699239 24.068795,-14.951772 30.362798,-5.882359c15.360299,28.729769 41.328719,53.158489 73.29876,64.646067c16.598711,5.258793 35.271748,5.1759 51.458491,-1.387043c-6.750806,9.953812 -17.921987,16.337447 -28.449459,22.200764c-26.905867,10.906122 -59.429514,4.992532 -82.099518,-12.01059c-21.941704,-16.495027 -39.16558,-40.103229 -44.512569,-66.439283l-0.031606,-0.609973l-0.026898,-0.517584l0,0l0,0zm11.224559,-103.450697c20.362944,-13.300758 45.596348,-19.538498 70.209037,-17.881523c-12.598901,7.636461 -28.407944,4.735364 -42.223242,8.869977c-9.638218,1.992804 -19.204907,4.6726 -27.985795,9.011538l0,0.000007zm17.58251,93.715602c13.406446,-6.026346 28.663316,-5.928528 43.151964,-5.103928c8.734961,12.919429 14.963592,27.936406 28.526673,37.250354c15.80623,13.403046 38.806658,17.186504 58.722852,10.888447c6.839468,-4.38798 14.432836,-1.584025 10.697692,7.119957c-4.496269,14.451835 -20.461249,20.798782 -35.091506,21.499776c-29.931506,2.839298 -57.313743,-13.309325 -77.533214,-32.813461c-11.795625,-11.214484 -21.758165,-24.291522 -28.474469,-38.841153l0.000008,0.000007zm45.465171,-107.457061c10.909411,-8.219393 25.767148,-0.782095 36.929769,3.151203c11.102525,9.020775 12.59032,24.030142 15.524371,36.844281c4.905379,30.080815 2.921201,62.395691 -11.895067,89.853902c-3.540604,9.625032 -13.716144,14.838987 -20.23806,4.432818c-7.579062,-7.937783 -13.374234,-17.174301 -18.843248,-26.473288c-3.234485,-8.898242 7.353061,-15.170496 9.570412,-23.306607c4.320273,-8.111662 5.418934,-17.235423 5.9039,-26.113284c2.035677,-13.28106 0.03291,-27.058797 -3.645065,-39.918458c-2.579291,-7.115738 -6.767955,-14.007728 -13.307012,-18.470574l0,0.000007zm31.356331,142.067821c21.475494,-23.040324 24.88019,-55.757321 23.263683,-85.21254c-0.984223,-17.366646 -3.765234,-35.313517 -13.408591,-50.437412c9.965223,0.293043 20.682952,9.182041 28.49092,15.728151c22.129255,26.719722 28.636812,65.808274 11.813509,96.509241c-6.617757,12.414063 -15.581585,23.619059 -26.104759,33.282125c-8.80937,-0.687395 -17.738871,-3.852737 -24.054769,-9.869565l0.000008,0zm24.489662,10.00271c23.127761,-21.168311 39.876708,-51.592146 34.878346,-82.787609c-1.989894,-14.610768 -7.607666,-28.724736 -16.020792,-41.085143c15.408523,9.118182 23.976122,25.268014 31.682488,40.271399c11.078228,26.221973 5.055599,58.182266 -14.741836,79.140018c-10.166981,5.476142 -24.512573,6.314349 -35.798206,4.461335zm38.075623,-4.896082c7.933883,-13.161241 16.936345,-26.503165 17.763222,-42.117862c1.23312,-5.220766 -0.679522,10.243154 -1.343312,13.496789c-2.110055,11.49027 -4.865327,23.753557 -12.364257,33.128627c-1.725266,-0.90884 -0.955605,-5.334869 -4.055645,-4.507555l-0.000008,0z";
-    var pathData1 = "m303.262756,125.42184c63.699612,-172.469916 313.276783,0 0,221.747034c-313.276783,-221.747034 -63.699612,-394.21695 0,-221.747034z";
-    var pathData2 = "m94.687504,150.654875l130.271436,0l40.254876,-123.757319l40.254899,123.757319l130.271413,0l-105.391612,76.485354l40.256959,123.757319l-105.391658,-76.487437l-105.391635,76.487437l40.25697,-123.757319l-105.391647,-76.485354z";
+    var pathData3 = "m0,59l30,-60l30,60-59,0z";
+    var pathData5 = "m0,19l22,0l7,-20l7,20l23,0l-18,13l7,22l-18,-13l-18,13l7,-22l-18,-13z";
+    var pathData55 = "m2,21l30,-21l28,21l-11,35l-36,0l-11,-35l1,-0.5z";
+    var pathDatalove = "m30,18c11.544266,-33.118795 56.775077,0 0,42.581308c-56.775077,-42.581308 -11.544266,-75.700103 0,-42.581308z";
     var imgpath = '../images/img1.jpg';
-    fabric.Image.fromURL(imgpath, function(img) {
-        // img.set({ width: 230, height: 230});
-        var patternSourceCanvas = new fabric.StaticCanvas();
-        patternSourceCanvas.add(img);
-        patternSourceCanvas.renderAll();
-        var pattern = new fabric.Pattern({
-            source: function() {
-                patternSourceCanvas.setDimensions({
-                    width: 230,
-                    height: 230
-                });
-                patternSourceCanvas.renderAll();
-                return patternSourceCanvas.getElement();
-            },
-            repeat: "no-repeat"
-        });
-        var path = new fabric.Path(pathData,{
-            left: 120,
-            top: 120,
-            fill: pattern
-        });
-        canvas.add(path)
-    });
-    /* var clipPath = new fabric.Circle({
-        radius: 100,
-        top: -100,
-        left: -100
-    });
-    var group = new fabric.Group([
-        new fabric.Rect({ width: 100, height: 100, fill: 'red' }),
-        new fabric.Rect({ width: 100, height: 100, fill: 'yellow', left: 100 }),
-        new fabric.Rect({ width: 100, height: 100, fill: 'blue', top: 100 }),
-        new fabric.Rect({ width: 100, height: 100, fill: 'green', left: 100, top: 100 })
-    ]);
-    group.clipPath = clipPath;
-    canvas.add(group); */
-    /* var imgElement = document.getElementById('my-image');
-    var imgInstance = new fabric.Image.fromURL('http://www.abudhabi2.com/wp-content/uploads/2016/12/IMG-Worlds-of-Adventure.jpg', function(img) {
+    canvas.lockScalingX = canvas.lockScalingY = true;
+    fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
+
+    fabric.Image.fromURL('https://cc-west-usa.oss-us-west-1.aliyuncs.com/20190717/258498805467.png', function (img) {
+        img.set({
+            left: 100,
+            top: 100
+        }).scaleToWidth(100);
+
         canvas.add(img);
     });
- */
+    
+    canvas.on('mouse:down', function(options) {
+        canvas.set({
+            left: 200,
+            top: 100
+        })
+    });
+    // canvas.add(
+    //     new fabric.Rect({ top: 100, left: 100, width: 50, height: 50, fill: '#f55' }),
+    //     new fabric.Circle({ top: 140, left: 230, radius: 75, fill: 'green' }),
+    //     new fabric.Triangle({ top: 300, left: 210, width: 100, height: 100, fill: 'blue' })
+    //   );
+    /* var  obj = {
+        left: 100,
+        top: 200,
+        angle: 0,
+        fill: "",
+        strokeWidth: 2,
+        stroke: "#880E4F",
+        // selectable: false
+    }
+    
+    var clipPath = new fabric.Path(pathData3,obj);
+    // canvas.clipPath = clipPath;
+    var path = new fabric.Path(pathData3,obj);  */
+
+    var rectObj = {
+        width: 100,
+        height: 100,
+        left: 200,
+        top: 200,
+        angle: 30,
+        stroke: '#F9AE08',
+        strokeWidth: 2,
+        hasControls: true,
+        fill: "#ff0",
+        // selectable: false
+    }
+    var rectObj1 = {}
+    for (let key in rectObj) {
+        rectObj1[key] = rectObj[key]
+    }
+    rectObj1.angle = 0;
+    rectObj1.stroke = "#000";
+    rectObj1.fill = "#f00";
+    var addArea = new fabric.Rect(rectObj);
+    // canvas.clipPath = addArea;
+    canvas.add(addArea)
+
+    //参照矩形
+    canvas.add(new fabric.Rect(rectObj1))
+
+    var angleL = rectObj.width / 2 - Math.sin((rectObj.angle + 90) * Math.PI / 180) * rectObj.width / 2;
+    var angleT = Math.cos(rectObj.angle * Math.PI / 180) * rectObj.height / 4;
+    var oleft = rectObj.left + rectObj.width / 2;
+    var otop = rectObj.top + rectObj.height / 2;
+    var circleObj = {
+        radius: 25,
+        fill: '#000',
+        scaleY: 0.5,
+        scaleX: 0.5,
+        stroke: '#F9AE08',
+        originX: 'center',
+        strokeWidth: 2,
+        left: oleft,
+        top: otop,
+        originY: 'center'
+    }
+
+    var circleObj1 = {};
+    for (let key in circleObj) {
+        circleObj1[key] = circleObj[key]
+    }
+    circleObj1.left = oleft - angleL;
+    circleObj1.top = otop + angleT;
+    circleObj1.fill = "red";
+    var circle = new fabric.Path(pathData3, circleObj);
+
+    var angleControl = document.getElementById('angle-control');
+    angleControl.oninput = function () {
+        canvas.getActiveObject().set('angle', parseInt(this.value, 10)).setCoords();
+        canvas.requestRenderAll();
+    };
+    canvas.add(new fabric.Circle({
+        radius: 75,
+        fill: '',
+        stroke: '#f00',
+        originX: 'center',
+        strokeWidth: 2,
+        left: 250,
+        top: 400
+    }))
+    canvas.setActiveObject(canvas.item(0));
+    canvas.add(new fabric.Path(pathData55, {
+        scaleX: 1,
+        scaleY: 1,
+        fill: "",
+        strokeWidth: 2,
+        stroke: "#880E4F"
+    }))
+
+
+
+
+    var otext = new fabric.IText('dadsa',{
+        fill: '#D81B60',
+        strokeWidth: 0,
+        stroke: "#880E4F",
+        scaleX:1,
+        scaleY:1,
+        originX: 'center',
+        originY: 'center',
+        fontFamily:"",
+        fontSize:30,
+        angle:0,
+        charSpacing:20+200,
+        top:400,
+        left:250,
+        editable:true,
+        isEditing:true
+    });
+    canvas.add(otext).setActiveObject(otext);
+
+    //重置
+    function reset(){
+        if(canvas.getActiveObject()){
+        canvas.getActiveObject().set({
+                left: 90,
+                top: 200,
+                // selectable:true
+            })
+            canvas.requestRenderAll();
+        }
+        
+    }
+    document.getElementById("reset").addEventListener("click", reset);
+    //复制
+    function paste() {
+        var _clipboard;
+        // clone again, so you can do multiple copies.
+        canvas.getActiveObject().clone(function(cloned) {
+            _clipboard = cloned;
+        })
+        _clipboard.set({
+            left: _clipboard.left + 10,
+            top: _clipboard.top + 10,
+            evented: true,
+        });
+        canvas.add(_clipboard).setActiveObject(_clipboard);
+        canvas.requestRenderAll();
+        
+    }
+    document.getElementById("paste").addEventListener("click", function(){
+        canvas.add(new fabric.IText('dadsa',{
+            // fill: '#D81B60',
+            strokeWidth: 1,
+            stroke: "#880E4F",
+            scaleX:1,
+            scaleY:1,
+            // originX: 'center',
+            // originY: 'center',
+            // fontFamily:"",
+            // fontSize:30,
+            // angle:0,
+            // charSpacing:20+200,
+            top:300,
+            left:200,
+            // isEditing: true,
+            // editable:true,
+            editingBorderColor: 'rgba(0,0,0,1)',
+            cursorColor: '#0ff'
+        }))
+    });
+    function moveup(){//上移
+        var selected=canvas.getActiveObject();
+        selected.bringToFront();
+    }
+    document.getElementById("moveup").addEventListener("click",moveup);
+
+    //下移
+    function movedown(){
+        var selected = canvas.getActiveObject();
+        selected.sendBackwards(true);
+    }
+    document.getElementById("movedown").addEventListener("click",movedown);
+    
+    //选中图层
+    document.getElementById("select1").addEventListener("click",function(){
+        canvas.setActiveObject(canvas.item(1));
+        canvas.requestRenderAll();
+    });
+    document.getElementById("select2").addEventListener("click",function(){
+        canvas.setActiveObject(canvas.item(2));
+        canvas.requestRenderAll();
+    });
 })()

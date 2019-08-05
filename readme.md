@@ -1,1 +1,1 @@
-browser-sync --start --files "**"s
+browser-sync start --server --files "**"

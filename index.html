@@ -3,12 +3,13 @@
 
 <head>
     <title>测试测试Canvas图片处理演示</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 </head>
 <style>
     canvas {
         border: 1px solid #f00;
     }
-    
+
     .button {
         border-radius: 5px;
         padding: 5px 10px;
@@ -18,20 +19,58 @@
         margin: 10px;
         float: left;
     }
-    
+
     .item {
         display: block;
+    }
+
+    span {
+        background: #333;
+        margin: 0 5px;
+        color: #fff;
+        padding: 2px 5px;
+    }
+
+    img {
+        border: 1px solid #333;
     }
 </style>
 
 <body>
-    <canvas id="canvas" width="500" height="800"></canvas>
-    <!-- <img src="images/img1.jpg" id="my-image"> -->
-    <div class="button">添加图片</div>
-    <div class="button">添加图片1</div>
-
+    
+    <button id="paste">复制</button>
+    <button id="moveup">上移</button>
+    <button id="movedown">下移</button>
+    <span id="reset">还原</span>
+    <span id="select1">选1</span>
+    <span id="select2">选2</span>
+    <p>
+        <label><span>Angle:</span> <input type="range" id="angle-control" value="0" min="0" max="360"></label>
+    </p>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <img src="" id="img" /><div id="text"></div>
 </body>
 
 </html>
+<script>
+    var str = "https://cc-west-usa.oss-us-west-1.aliyuncs.com/20190803/649094557336._after hand one two two,https://cc-west-usa.oss-us-west-1.aliyuncs.com/20190803/345981052504._before hand one,https://cc-west-usa.oss-us-west-1.aliyuncs.com/20190803/79992105120._before hand two two,https://cc-west-usa.oss-us-west-1.aliyuncs.com/20190803/263577210059._after hand one one one"
+    var showLinks = str.split(",");
+    for(let k=0;k<showLinks.length;k++){
+        let linkArr = showLinks[k].split('_');
+        let linkObj = {
+            imgsrc:showLinks[k],
+            areaName:linkArr[1].replace(/\s/g,''),
+            color:linkArr[2]
+        }
+        console.log(k)
+        console.log(linkObj.areaName)
+        console.log(('before hand one').replace(/\s/g,''))
+        if(linkArr[1].replace(/\s/g,'')==('before hand one').replace(/\s/g,'')){
+            // $scope.sendData.bigImg=showLinks[k];
+            console.log(showLinks[k])
+        }
+        // sucessLinks.push(linkObj);
+    }
+</script>
 <script src="js/fabric.min.js"></script>
-<script src="js/index.js"></script>
+<!-- <script src="js/index.js"></script> -->
