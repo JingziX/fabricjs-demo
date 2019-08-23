@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>测试测试Canvas图片处理演示</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+</head>
+<style>
+    div{
+        margin: 50px;
+        background: #094ca5;
+        color: white;
+        line-height: 40px;
+    }
+</style>
+
+<body>
+    <div id="choose1">
+        choose1
+    </div>
+    <div id="choose2">
+        choose2
+    </div>
+    <div id="choose3">
+        choose3
+    </div>
+</body>
+
+</html>
+<script>
+    var varientKeysInner = ["Black-1-A","Green-3-B","Green-1-C","Green-2-D","Red-7-D","Red-6-F"];
+
+    //选中的 color 数组
+    var checkedColorArray = [];
+
+
+    let choose1 = document.getElementById('choose1');
+    let choose2 = document.getElementById('choose2');
+    let choose3 = document.getElementById('choose3');
+    
+    choose1.addEventListener('click',function(){
+        initMap(varientKeysInner);
+        //模拟选中 Black
+        checkedColor("Black");
+        checkedColorArray.push("Black");
+        //模拟选中 Green
+        checkedColor("Green");
+        checkedColorArray.push("Green");
+
+        console.log(checkedSizeMap);
+        console.log(checkedStyleMap);
+    })
+    choose2.addEventListener('click',function(){
+        //模拟选中 size 为 1
+        var size = "1";
+
+        for( let color of checkedColorArray){
+            // 不为null 说明存在 color + size 的这个组合 比如 Black-1-A
+            if(colorAndSizeToStyleMap.get(color + size) != null){
+                checkedColorAndSize(color,size);
+            }
+        }
+        
+        console.log(checkedSizeMap);
+        console.log(checkedStyleMap);
+    })
+    choose3.addEventListener('click',function(){
+        //模拟取消选中 size 为 1
+        var size = "1";
+
+        for( let color of checkedColorArray){
+            // 不为null 说明存在 color + size 的这个组合 比如 Black-1-A
+            if(colorAndSizeToStyleMap.get(color + size) != null){
+                unCheckedColorAndSize(color,size);
+            }
+        }
+        
+        console.log(checkedSizeMap);
+        console.log(checkedStyleMap);
+    })
+
+//------------------ 初始化 -------------------------
+    //颜色 -> 尺寸
+    var colorToSizeMap = new Map();
+    //颜色 + 尺寸 -> 样式
+    var colorAndSizeToStyleMap = new Map();
+    // 尺寸 -> count
+    var checkedSizeMap = new Map();
+    // 样式 -> count
+    var checkedStyleMap = new Map();
+    function initMap(varientKeysInner){
+        for (let m = 0; m < varientKeysInner.length; m++) {
+            // 对变体数组进行遍历，
+            var curVarKey = varientKeysInner[m].split('-');
+            var color = curVarKey[0];
+            var size = curVarKey[1];
+            var style = curVarKey[2];
+
+            if (colorToSizeMap.get(color) == null) {
+                var values = [size];
+                colorToSizeMap.set(color,values);
+            }else{
+                colorToSizeMap.get(color).push(size);
+            }
+
+            if (colorAndSizeToStyleMap.get(color + size) == null) {
+                var values = [style];
+                colorAndSizeToStyleMap.set(color + size,values);
+            }else{
+                colorAndSizeToStyleMap.get(color + size).push(size);
+            }
+
+            if (checkedSizeMap.get(size) == null) {
+                checkedSizeMap.set(size,0);
+            }
+
+            if (checkedStyleMap.get(style) == null) {
+                checkedStyleMap.set(style,0);
+            }
+        }
+    }
+//------------------ 初始化 -------------------------
+
+//------------------ 给可选中的size计数，计数为 0 则不可选，大于 0 可选择  -------------------------
+    function checkedColor(colorKey){
+       var sizeArray = colorToSizeMap.get(colorKey);
+       for (let m = 0; m < sizeArray.length; m++){
+            var size = sizeArray[m];
+            var count = checkedSizeMap.get(size) + 1; 
+            checkedSizeMap.set(size,count);
+       }
+       buildSelectDisacle();
+    }
+    function unCheckedColor(colorKey){
+       var sizeArray = colorToSizeMap.get(colorKey);
+       for (let m = 0; m < sizeArray.length; m++){
+            var size = sizeArray[m];
+            var count = checkedSizeMap.get(size) - 1;
+            checkedSizeMap.set(size,count);
+       }
+       buildSelectDisacle();
+    }
+    function buildSelectDisacle(){
+        // checkedSizeMap.forEach(function(value, key, map){
+        //     if(value == 0){
+        //         key的select不可以选
+        //     }
+        //     if(value > 0){
+        //         key的select可以选
+        //     }
+
+        // })
+    }
+//------------------ 给可选中的size计数，计数为 0 则不可选，大于 0 可选择 -------------------------
+
+
+//------------------ 给可选中的style计数，计数为 0 则不可选，大于 0 可选择  -------------------------
+    function checkedColorAndSize(color,size){
+       var styleArray = colorAndSizeToStyleMap.get(color + size);
+       for (let m = 0; m < styleArray.length; m++){
+            var style = styleArray[m];
+            var count = checkedStyleMap.get(style) + 1; 
+            checkedStyleMap.set(style,count);
+       }
+       buildStyleDisable();
+    }
+    function unCheckedColorAndSize(color,size){
+       var styleArray = colorAndSizeToStyleMap.get(color + size);
+       for (let m = 0; m < styleArray.length; m++){
+            var style = styleArray[m];
+            var count = checkedStyleMap.get(style) - 1;
+            checkedStyleMap.set(style,count);
+       }
+       buildStyleDisable();
+    }
+    function buildStyleDisable(){
+        // checkedSizeMap.forEach(function(value, key, map){
+        //     if(value == 0){
+        //         key的select不可以选
+        //     }
+        //     if(value > 0){
+        //         key的select可以选
+        //     }
+
+        // })
+    }
+//------------------ 给可选中的style计数，计数为 0 则不可选，大于 0 可选择 -------------------------
+</script>

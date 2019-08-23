@@ -37,7 +37,8 @@
 </style>
 
 <body>
-    
+    <input type="text" id="text">
+    <span id="val"></span>
     <button id="paste">复制</button>
     <button id="moveup">上移</button>
     <button id="movedown">下移</button>
@@ -48,29 +49,34 @@
         <label><span>Angle:</span> <input type="range" id="angle-control" value="0" min="0" max="360"></label>
     </p>
     <canvas id="canvas" width="500" height="500"></canvas>
-    <img src="" id="img" /><div id="text"></div>
+    <img src="" id="img" />
+    <div id="text"></div>
 </body>
 
 </html>
 <script>
-    var str = "https://cc-west-usa.oss-us-west-1.aliyuncs.com/20190803/649094557336._after hand one two two,https://cc-west-usa.oss-us-west-1.aliyuncs.com/20190803/345981052504._before hand one,https://cc-west-usa.oss-us-west-1.aliyuncs.com/20190803/79992105120._before hand two two,https://cc-west-usa.oss-us-west-1.aliyuncs.com/20190803/263577210059._after hand one one one"
-    var showLinks = str.split(",");
-    for(let k=0;k<showLinks.length;k++){
-        let linkArr = showLinks[k].split('_');
-        let linkObj = {
-            imgsrc:showLinks[k],
-            areaName:linkArr[1].replace(/\s/g,''),
-            color:linkArr[2]
+    var arr1 = [['red','white'],[1,2],['a','b']]
+    var result = new Array();
+    for(let i=0;i<arr1.length;i++){
+        result = getChooseData(arr1[i], result);
+        
+    }
+    console.log(result)
+    function getChooseData(list, temp) {
+        var result = new Array();
+        if (temp.length > 0) {
+            for (var i = 0; i < temp.length; i++) {
+                for(let j=0;j<list.length;j++){
+                    result.push(temp[i] + '-' + list[j]);
+                }
+            }
+        } else {
+            for(let j=0;j<list.length;j++){
+                result.push(list[j]);
+            }
         }
-        console.log(k)
-        console.log(linkObj.areaName)
-        console.log(('before hand one').replace(/\s/g,''))
-        if(linkArr[1].replace(/\s/g,'')==('before hand one').replace(/\s/g,'')){
-            // $scope.sendData.bigImg=showLinks[k];
-            console.log(showLinks[k])
-        }
-        // sucessLinks.push(linkObj);
+        return result;
     }
 </script>
 <script src="js/fabric.min.js"></script>
-<!-- <script src="js/index.js"></script> -->
+<script src="js/index.js"></script>

@@ -7,151 +7,50 @@
     var pathDatalove = "m30,18c11.544266,-33.118795 56.775077,0 0,42.581308c-56.775077,-42.581308 -11.544266,-75.700103 0,-42.581308z";
     var imgpath = '../images/img1.jpg';
     canvas.lockScalingX = canvas.lockScalingY = true;
-    fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
+    // fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
+    var fabricObj = {
+        width: 100,//宽度，number
+        height: 100,//高度，number
+        left: 200,//左定位距离，number
+        top: 200,//上定位距离，number
+        angle: 30,//旋转角度，number
+        stroke: '#F9AE08',//描边颜色，string
+        strokeWidth: 2,//描边像素，number
+        hasControls: true,//是否显示，booleans
+       fill: "#ff0",//填充颜色，字体与图形相同,默认#000，string
+       selectable: true,//是否可选中，默认true，booleans
+       scaleX:1,//x轴放大倍数，根据中心点放大，number
+       scaleY:1,//y轴放大倍数，根据中心点放大，number
+       originX: 'left',//x轴居中点，默认left，string
+       originY: 'top',//y轴居中点，默认top，string
+       fontFamily:'Arial',//字体类型，string
+       fontSize:16,//字体大小，，number
+       charSpacing:0,//字符间距，number
+       radius: 25,//圆直径，number
+       editable:false,//当前文字是否可编辑，booleans
+   }
+   let canvasItem = new fabric.Rect(fabricObj)
+//    canvas.add(canvasItem)
 
-    fabric.Image.fromURL('https://cc-west-usa.oss-us-west-1.aliyuncs.com/20190717/258498805467.png', function (img) {
-        img.set({
-            left: 100,
-            top: 100
-        }).scaleToWidth(100);
+        let oImage = new Image();
+        oImage.src = 'https://cc-west-usa.oss-us-west-1.aliyuncs.com/15138144/1762249866000.jpg?timeStamp='+new Date().getTime();
+        // oImage.src = 'https://bs-album.oss-ap-southeast-5.aliyuncs.com/sample.jpg?timeStamp='+new Date().getTime();
+        // oImage.src = 'https://glodimg.chinabrands.com/pdm-product-pic/Distribution/2019/07/11/source-img/20190711151531_73856.jpg?timeStamp='+new Date().getTime();
 
-        canvas.add(img);
-    });
-    
-    canvas.on('mouse:down', function(options) {
-        canvas.set({
-            left: 200,
-            top: 100
-        })
-    });
-    // canvas.add(
-    //     new fabric.Rect({ top: 100, left: 100, width: 50, height: 50, fill: '#f55' }),
-    //     new fabric.Circle({ top: 140, left: 230, radius: 75, fill: 'green' }),
-    //     new fabric.Triangle({ top: 300, left: 210, width: 100, height: 100, fill: 'blue' })
-    //   );
-    /* var  obj = {
-        left: 100,
-        top: 200,
-        angle: 0,
-        fill: "",
-        strokeWidth: 2,
-        stroke: "#880E4F",
-        // selectable: false
-    }
-    
-    var clipPath = new fabric.Path(pathData3,obj);
-    // canvas.clipPath = clipPath;
-    var path = new fabric.Path(pathData3,obj);  */
-
-    var rectObj = {
-        width: 100,
-        height: 100,
-        left: 200,
-        top: 200,
-        angle: 30,
-        stroke: '#F9AE08',
-        strokeWidth: 2,
-        hasControls: true,
-        fill: "#ff0",
-        // selectable: false
-    }
-    var rectObj1 = {}
-    for (let key in rectObj) {
-        rectObj1[key] = rectObj[key]
-    }
-    rectObj1.angle = 0;
-    rectObj1.stroke = "#000";
-    rectObj1.fill = "#f00";
-    var addArea = new fabric.Rect(rectObj);
-    // canvas.clipPath = addArea;
-    canvas.add(addArea)
-
-    //参照矩形
-    canvas.add(new fabric.Rect(rectObj1))
-
-    var angleL = rectObj.width / 2 - Math.sin((rectObj.angle + 90) * Math.PI / 180) * rectObj.width / 2;
-    var angleT = Math.cos(rectObj.angle * Math.PI / 180) * rectObj.height / 4;
-    var oleft = rectObj.left + rectObj.width / 2;
-    var otop = rectObj.top + rectObj.height / 2;
-    var circleObj = {
-        radius: 25,
-        fill: '#000',
-        scaleY: 0.5,
-        scaleX: 0.5,
-        stroke: '#F9AE08',
-        originX: 'center',
-        strokeWidth: 2,
-        left: oleft,
-        top: otop,
-        originY: 'center'
-    }
-
-    var circleObj1 = {};
-    for (let key in circleObj) {
-        circleObj1[key] = circleObj[key]
-    }
-    circleObj1.left = oleft - angleL;
-    circleObj1.top = otop + angleT;
-    circleObj1.fill = "red";
-    var circle = new fabric.Path(pathData3, circleObj);
-
-    var angleControl = document.getElementById('angle-control');
-    angleControl.oninput = function () {
-        canvas.getActiveObject().set('angle', parseInt(this.value, 10)).setCoords();
-        canvas.requestRenderAll();
-    };
-    canvas.add(new fabric.Circle({
-        radius: 75,
-        fill: '',
-        stroke: '#f00',
-        originX: 'center',
-        strokeWidth: 2,
-        left: 250,
-        top: 400
-    }))
-    canvas.setActiveObject(canvas.item(0));
-    canvas.add(new fabric.Path(pathData55, {
-        scaleX: 1,
-        scaleY: 1,
-        fill: "",
-        strokeWidth: 2,
-        stroke: "#880E4F"
-    }))
-
-
-
-
-    var otext = new fabric.IText('dadsa',{
-        fill: '#D81B60',
-        strokeWidth: 0,
-        stroke: "#880E4F",
-        scaleX:1,
-        scaleY:1,
-        originX: 'center',
-        originY: 'center',
-        fontFamily:"",
-        fontSize:30,
-        angle:0,
-        charSpacing:20+200,
-        top:400,
-        left:250,
-        editable:true,
-        isEditing:true
-    });
-    canvas.add(otext).setActiveObject(otext);
-
-    //重置
-    function reset(){
-        if(canvas.getActiveObject()){
-        canvas.getActiveObject().set({
-                left: 90,
-                top: 200,
-                // selectable:true
-            })
-            canvas.requestRenderAll();
+        oImage.setAttribute('crossOrigin', 'anonymous');
+        oImage.onload = function(){
+            let oimg = new fabric.Image(oImage,{
+                scaleX: 0.5,
+                scaleY: 0.5,
+                selectable: false,
+                left: oImage.width/2, 
+                top: oImage.height/2,
+                originX: 'center',
+                originY: 'center',
+            });
+            canvas.add(oimg);
         }
-        
-    }
+
     document.getElementById("reset").addEventListener("click", reset);
     //复制
     function paste() {
@@ -163,32 +62,15 @@
         _clipboard.set({
             left: _clipboard.left + 10,
             top: _clipboard.top + 10,
-            evented: true,
+            // evented: true,
         });
         canvas.add(_clipboard).setActiveObject(_clipboard);
         canvas.requestRenderAll();
-        
     }
     document.getElementById("paste").addEventListener("click", function(){
-        canvas.add(new fabric.IText('dadsa',{
-            // fill: '#D81B60',
-            strokeWidth: 1,
-            stroke: "#880E4F",
-            scaleX:1,
-            scaleY:1,
-            // originX: 'center',
-            // originY: 'center',
-            // fontFamily:"",
-            // fontSize:30,
-            // angle:0,
-            // charSpacing:20+200,
-            top:300,
-            left:200,
-            // isEditing: true,
-            // editable:true,
-            editingBorderColor: 'rgba(0,0,0,1)',
-            cursorColor: '#0ff'
-        }))
+        // paste()
+        console.log(canvas.toDataURL())
+        document.getElementById("img").src=(canvas.toDataURL())
     });
     function moveup(){//上移
         var selected=canvas.getActiveObject();
@@ -210,6 +92,12 @@
     });
     document.getElementById("select2").addEventListener("click",function(){
         canvas.setActiveObject(canvas.item(2));
+        canvas.requestRenderAll();
+    });
+    document.getElementById("angle-control").addEventListener("input",function(e){
+        canvas.item(0).set({
+            angle:e.target.value
+        })
         canvas.requestRenderAll();
     });
 })()
