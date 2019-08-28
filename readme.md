@@ -1,2 +1,2 @@
 # fabricjs-demo
-brower-sync start --server  --files "**"
+browser-sync start --server  --files "**"
